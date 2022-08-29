@@ -2,9 +2,9 @@ namespace VoeAirlinesSenai.ViewModel;
 
 public class ListaAeronaveViewModel
 {
-    public ListaAeronaveViewModel(int id, string codigo, string modelo)
+    public ListaAeronaveViewModel(int id,string modelo,string codigo)
     {
-        Id = id;
+        Id = id;    
         Modelo = modelo;
         Codigo = codigo;
     }

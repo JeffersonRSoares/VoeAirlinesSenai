@@ -10,9 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // *** Criei a duas linhas abaixo *** 
+//injeção de dependência da classe VoeiAirlinesContext
 builder.Services.AddDbContext<VoeAirlinesContext>();
+//injeção de dependência da classe AeronaveService
 builder.Services.AddTransient<AeronaveService>();
-
 
 var app = builder.Build();
 
