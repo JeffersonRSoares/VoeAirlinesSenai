@@ -40,7 +40,6 @@ public class AeronaveController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult ListarAeronavePeloId(int id)
     {
-
         var aeronave = _aeronaveService.ListarAeronavePeloId(id);
         if (aeronave != null)
         {

@@ -15,6 +15,7 @@ builder.Services.AddDbContext<VoeAirlinesContext>();
 //injeção de dependência da classe AeronaveService
 builder.Services.AddTransient<AeronaveService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

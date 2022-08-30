@@ -52,19 +52,16 @@ public class AeronaveService
     );
     }
     //Listar Aeronaves
-    public IEnumerable<ListarAeronaveViewModel> ListarAeronaves()
+    public IEnumerable<ListaAeronaveViewModel> ListarAeronaves()
     {
-
-        return _context.Aeronaves.Select(a => new ListarAeronaveViewModel(a.Id, a.Modelo, a.Codigo));
-
+        return _context.Aeronaves.Select(a => new ListaAeronaveViewModel(a.Id, a.Modelo, a.Codigo));
     }
-    public DetalhesAeronaveViewModel? ListarAeronavePeloId(int id)
+    public DetalheAeronaveViewModel? ListarAeronavePeloId(int id)
     {
-
         var aeronave = _context.Aeronaves.Find(id);
         if (aeronave != null)
         {
-            return new DetalhesAeronaveViewModel(
+            return new DetalheAeronaveViewModel(
                 aeronave.Id,
                 aeronave.Fabricante,
                 aeronave.Modelo,
@@ -75,17 +72,8 @@ public class AeronaveService
         return null;
     }
 
-    public void ExcluirAeronave(int id)
-    {
-        var aeronave = _context.Aeronaves.Find(id);
-        if (aeronave != null)
-        {
-            _context.Remove(aeronave);
-            _context.SaveChanges();
-        }
-    }
-    /* Paramos aqui*/
-    public DetalhesAeronaveViewModel? AtualizarAeronave(AtualizarAeronaveViewModel dados)
+       /* Paramos aqui*/
+    public DetalheAeronaveViewModel? AtualizarAeronave(AtualizarAeronaveViewModel dados)
     {
         var aeronave = _context.Aeronaves.Find(dados.Id);
         if (aeronave != null)
@@ -95,8 +83,18 @@ public class AeronaveService
             aeronave.Codigo = dados.Codigo;
             _context.Update(aeronave);
             _context.SaveChanges();
-             return new DetalhesAeronaveViewModel(aeronave.Id,aeronave.Fabricante,aeronave.Modelo,aeronave.Codigo);
+             return new DetalheAeronaveViewModel(aeronave.Id,aeronave.Fabricante,aeronave.Modelo,aeronave.Codigo);
         }
         return null;
+    }  
+    //Deletar AERONAVE !
+    public void ExcluirAeronave(int id)
+    {
+        var aeronave = _context.Aeronaves.Find(id);
+        if (aeronave != null)
+        {
+            _context.Remove(aeronave);
+            _context.SaveChanges();
+        }
     }
 }
